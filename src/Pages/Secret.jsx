@@ -1,0 +1,10 @@
+
+const Secret = () => {
+    return (
+        <div className="p-32">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus officia, impedit vero, accusamus fuga reprehenderit suscipit nulla libero, enim sed cumque at quis quibusdam sunt veritatis aut totam. Commodi, amet.</p>
+        </div>
+    );
+};
+
+export default Secret;
