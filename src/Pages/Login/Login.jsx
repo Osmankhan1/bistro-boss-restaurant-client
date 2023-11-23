@@ -4,6 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../Component/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -30,13 +31,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-               
+
                 Swal.fire({
                     title: "Good job!",
                     text: "succesfully log in your mail",
                     icon: "success"
-                  });
-                  navigate(from, {replace: true});
+                });
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error)
@@ -85,14 +86,17 @@ const Login = () => {
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
-                                <input onBlur={handleValidateCapcha} type="text"  name="captcha" placeholder="type captcha" className="input input-bordered" required />
-                                <button  className="btn btn-outline btn-xs mt-3">Validate</button>
+                                <input onBlur={handleValidateCapcha} type="text" name="captcha" placeholder="type captcha" className="input input-bordered" required />
+                                <button className="btn btn-outline btn-xs mt-3">Validate</button>
                             </div>
                             <div className="form-control mt-6">
                                 <button disabled={disabled} className="btn btn-primary">Login</button>
                             </div>
                             <h1 className='text-[#D1A054] text-xl font-medium mt-[20px]'>New here? <Link to='/register'>Create a New Account</Link></h1>
                         </form>
+                        <div className='p-4'>
+                            <SocialLogin></SocialLogin>
+                        </div>
 
                     </div>
                 </div>

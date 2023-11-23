@@ -4,35 +4,51 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 
 const Register = () => {
     const navigate = useNavigate()
+    const axiosPublic = UseAxiosPublic();
 
     const { register, reset, handleSubmit, formState: { errors }, } = useForm();
 
-    const {creatUser, updateUserProfile} = useContext(AuthContext);
+    const { creatUser, updateUserProfile } = useContext(AuthContext);
 
     const onSubmit = (data) => {
         console.log(data)
         creatUser(data.email, data.password)
-        .then(result => {
-            const user = result.user
-            console.log(user)
-            updateUserProfile(data.name, data.photo)
-            .then(()=>{})
-            reset();
-            Swal.fire({
-                title: "Good job!",
-                text: "You registration is succesfull!",
-                icon: "success"
-              });
-              navigate('/')
-            
-        })
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        // create user entry in the database
+                        const useInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', useInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added in the database')
+                                    reset();
+                                    Swal.fire({
+                                        title: "Good job!",
+                                        text: "You registration is succesfull!",
+                                        icon: "success"
+                                    });
+                                    navigate('/')
+                                }
+                            })
+                    })
+
+
+            })
             .catch(error => {
                 console.error(error)
             })
-            
+
     }
 
 
@@ -61,7 +77,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">photo URL</span>
                                 </label>
-                                <input type="text" {...register("photoURL", { required: true })}  placeholder="Upload URL" className="input input-bordered" />
+                                <input type="text" {...register("photoURL", { required: true })} placeholder="Upload URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-700">photo URl is required</span>}
                             </div>
                             <div className="form-control">
@@ -102,6 +118,9 @@ const Register = () => {
                             </div>
                             <h1 className='text-[#D1A054] text-xl font-medium mt-[20px]'> <Link to='/login'>Already registered? Go to log in</Link></h1>
                         </form>
+                        <div className='p-4'>
+                            <SocialLogin></SocialLogin>
+                        </div>
                     </div>
                 </div>
             </div>
